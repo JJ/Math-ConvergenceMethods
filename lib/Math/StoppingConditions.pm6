@@ -1,5 +1,7 @@
 use v6;
 
+unit module Math::StoppingConditions;
+
 subset PositiveNum of Numeric where * > 0;
 
 sub diff (Numeric:D $x_1, Numeric:D $x_0, PositiveNum:D $epsilon = 10e-15) is export { 

@@ -1,6 +1,6 @@
 use v6;
 
-use lib <.>;
-use StoppingConditions;
+use lib "lib";
+use Math::StoppingConditions;
 
-put residue: 1,2,3;
+put residue(1,2);
