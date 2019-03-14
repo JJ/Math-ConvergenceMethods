@@ -1,6 +1,5 @@
 use v6;
 
-use lib "lib";
 use Math::StoppingConditions;
 
 unit module Math::ConvergenceMethods;
