@@ -1,0 +1,22 @@
+{
+  "perl": "6.*",
+  "name": "Math::ConvergenceMethods",
+  "version": "0.0.1",
+  "auth": "github:antoniogamiz",
+  "license": "GPL-v3.0",
+  "description": "Perl 6 convergence methods to solve lineal and non lineal equations",
+  "tags": ["Math", "Convergence", "Equations"],
+  "depends": [],
+  "test-depends": [],
+  "provides": {
+    "Math::StoppingConditions": "lib/Math/StoppingConditions.pm6",
+    "Math::ConvergenceMethods": "lib/Math/ConvergenceMethods.pm6"
+  },
+  "source-type": "git",
+  "source-url": "https://github.com/antoniogamiz/Math-ConvergenceMethods.git",
+  "support": {
+    "source": "https://github.com/antoniogamiz/Math-ConvergenceMethods",
+    "bugtracker": "https://github.com/antoniogamiz/Math-ConvergenceMethods/issues"
+  },
+  "authors": ["Antonio Gamiz Delgado <antoniogamiz10@gmail.com>"]
+}
