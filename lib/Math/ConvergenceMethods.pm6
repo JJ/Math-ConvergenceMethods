@@ -32,6 +32,7 @@ sub bisection ($f, $a is copy, $b is copy) is export {
 
 # regula-falsi method
 sub regula-falsi ($f, $a is copy, $b is copy) is export {
+    die "Incorrect arguments" if $a >= $b;
     my $c = $b - ( $b - $a ) * $f($b) / ( $f($b) - $f($a) );
 
     {
