@@ -32,5 +32,9 @@ sub f ($x) {return $x + 1;}
     is-approx regula-falsi(&f, -2, 0), -1;
     dies-ok { regula-falsi(&f, 3, 2) };
 }
+{
+    is-approx seccant(&f, -2, 0), -1;
+    dies-ok { seccant(&f, 3, 2) };
+}
 
 done-testing;

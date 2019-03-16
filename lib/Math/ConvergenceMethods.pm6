@@ -47,3 +47,17 @@ sub regula-falsi ($f, $a is copy, $b is copy) is export {
 
     return $c;
 }
+
+# seccant method
+sub seccant ($f, $a is copy, $b is copy) is export {
+    die "Incorrect arguments" if $a >= $b;
+    my $c = $b - ( $b - $a ) * $f($b) / ( $f($b) - $f($a) );
+
+    {
+        $a = $b;
+        $b = $c;
+        $c = $b - ( $b - $a ) * $f($b) / ( $f($b) - $f($a) );
+    } while ! residue( $f( $c ) );
+
+    return $c;
+}
