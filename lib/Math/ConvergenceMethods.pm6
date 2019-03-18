@@ -65,3 +65,19 @@ sub seccant ($f, $a is copy, $b is copy) is export {
 
     return $c;
 }
+
+# newthon-raphson
+sub newton-raphson ($f, $a, $b) is export {
+    die "Incorrect arguments" if $a >= $b;
+    my $x_0 = ($a+$b) / 2.0;
+    my $x_1 = $x_0 -$f($x_0) / derivative( $f, $x_0 );
+
+    {
+        $x_0 = $x_1;
+        $x_1 = $x_0 -$f($x_0) / derivative( $f, $x_0 );
+        
+    } while ! residue( $f( $x_1 ) );
+
+    return $x_1;
+
+}

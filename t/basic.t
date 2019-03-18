@@ -40,5 +40,8 @@ sub f ($x) {return $x + 1;}
     is-approx seccant(&f, -2, 0), -1;
     dies-ok { seccant(&f, 3, 2) };
 }
-
+{
+    is-approx newton-raphson(&f, -2, 0), -1;
+    dies-ok { newton-raphson(&f, 3, 2) };
+}
 done-testing;
