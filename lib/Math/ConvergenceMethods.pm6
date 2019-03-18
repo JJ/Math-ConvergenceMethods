@@ -14,7 +14,7 @@ sub necessary-iterations ($a, $b, $epsilon = 1e-15) is export {
 
 # bisectioni method
 sub bisection ($f, $a is copy, $b is copy) is export {
-    die "Incorrect arguments" if $a >= $b;
+    die "Invalid interval (a < b)" if $a >= $b;
     my $n = necessary-iterations($a, $b);
     for 1 .. $n {
         state $c;
@@ -36,7 +36,7 @@ sub bisection ($f, $a is copy, $b is copy) is export {
 
 # regula-falsi method
 sub regula-falsi ($f, $a is copy, $b is copy) is export {
-    die "Incorrect arguments" if $a >= $b;
+    die "Invalid interval (a < b)" if $a >= $b;
     my $c = $b - ( $b - $a ) * $f($b) / ( $f($b) - $f($a) );
 
     {
@@ -54,7 +54,7 @@ sub regula-falsi ($f, $a is copy, $b is copy) is export {
 
 # seccant method
 sub seccant ($f, $a is copy, $b is copy) is export {
-    die "Incorrect arguments" if $a >= $b;
+    die "Invalid interval (a < b)" if $a >= $b;
     my $c = $b - ( $b - $a ) * $f($b) / ( $f($b) - $f($a) );
 
     {
@@ -68,7 +68,7 @@ sub seccant ($f, $a is copy, $b is copy) is export {
 
 # newthon-raphson
 sub newton-raphson ($f, $a, $b) is export {
-    die "Incorrect arguments" if $a >= $b;
+    die "Invalid interval (a < b)" if $a >= $b;
     my $x_0 = ($a+$b) / 2.0;
     my $x_1 = $x_0 -$f($x_0) / derivative( $f, $x_0 );
 
