@@ -10,6 +10,10 @@ use Math::ConvergenceMethods;
 sub f ($x) {return $x + 1;}
 
 {
+    is-approx necessary-iterations(1,2), 49;
+    is-approx derivative(&f, 2), 1;
+}
+{
     nok diff(2, 0);
     ok diff(2, 0, 3);
     ok diff(0, 0);

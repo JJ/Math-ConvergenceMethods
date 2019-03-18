@@ -4,8 +4,12 @@ use Math::StoppingConditions;
 
 unit module Math::ConvergenceMethods;
 
-sub necessary-iterations($a, $b, $epsilon = 1e-15) {
-    return (log(($b-$a) / $epsilon) / log(2) - 1).ceiling
+sub derivative ($f, $x, $delta = 1e-4) is export {
+    ( $f( $x + $delta ) - $f($x) ) / $delta
+}
+
+sub necessary-iterations ($a, $b, $epsilon = 1e-15) is export {
+    (log(($b-$a) / $epsilon) / log(2) - 1).ceiling
 }
 
 # bisectioni method
