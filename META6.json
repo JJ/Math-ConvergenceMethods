@@ -3,7 +3,7 @@
   "name": "Math::ConvergenceMethods",
   "version": "0.0.1",
   "auth": "github:antoniogamiz",
-  "license": "GPL-v3.0",
+  "license": "GPL-3.0-only",
   "description": "Perl 6 convergence methods to solve lineal and non lineal equations",
   "tags": ["Math", "Convergence", "Equations"],
   "depends": [],
