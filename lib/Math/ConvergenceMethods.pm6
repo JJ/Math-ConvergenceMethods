@@ -22,7 +22,7 @@ sub bisection ($f, $a is copy, $b is copy) is export {
 
         # solution found
         return $c if residue( $f($c) );
-        
+
         if $f( $a )*$f( $c ) < 0 {
             $b=$c
         } else {
@@ -75,7 +75,7 @@ sub newton-raphson ($f, $a, $b) is export {
     {
         $x_0 = $x_1;
         $x_1 = $x_0 -$f($x_0) / derivative( $f, $x_0 );
-        
+
     } while ! residue( $f( $x_1 ) );
 
     return $x_1;
