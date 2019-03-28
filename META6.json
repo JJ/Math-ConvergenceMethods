@@ -18,5 +18,8 @@
     "source": "https://github.com/antoniogamiz/Math-ConvergenceMethods",
     "bugtracker": "https://github.com/antoniogamiz/Math-ConvergenceMethods/issues"
   },
-  "authors": ["Antonio Gamiz Delgado <antoniogamiz10@gmail.com>"]
+  "authors": ["Antonio Gamiz Delgado <antoniogamiz10@gmail.com>"],
+  "test-depends" : [
+  "Test::META"
+  ]
 }
