@@ -48,4 +48,8 @@ sub f2 ($x) {return $x/3 + 1/2}
     is-approx functional-iteration(&f2, -2, -1), -3/2, "functional-iteration method converge as expected";
     dies-ok { functional-iteration(&f2, 3, 2) }, "throws Invalid interval correctly";
 }
+{
+    is-approx steffsen(&f2, -2, -1), -3/2, "functional-iteration method converge as expected";
+    dies-ok { steffsen(&f2, 3, 2) }, "throws Invalid interval correctly";
+}
 done-testing;

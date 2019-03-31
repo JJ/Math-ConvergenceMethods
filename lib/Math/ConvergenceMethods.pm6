@@ -92,3 +92,20 @@ sub functional-iteration ($f, $a, $b) is export {
 
     return $x_0;
 }
+
+# steffsen
+sub steffsen ($f, $a, $b) is export {
+    die "Invalid interval (a < b)" if $a >= $b;
+    my $x_1 = ($a+$b) / 2.0;
+    my $x = $x_1;
+    $x_1 = $f($x_1);
+    my $x_2 = $f($x_1);
+
+    {
+      $x = $x - ( ($x_1-$x)**2 ) / ( $x_2-2*$x_1+$x );
+      $x_1 = $f( $x );
+      $x_2 = $f($x_1);
+    } while ! residue( $f( $x ) );
+
+    return $x;
+}
