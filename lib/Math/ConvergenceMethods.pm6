@@ -79,5 +79,16 @@ sub newton-raphson ($f, $a, $b) is export {
     } while ! residue( $f( $x_1 ) );
 
     return $x_1;
+}
 
+# functional iteration
+sub functional-iteration ($f, $a, $b) is export {
+    die "Invalid interval (a < b)" if $a >= $b;
+    my $x_0 = ($a+$b) / 2.0;
+
+    {
+        $x_0 = $f($x_0);
+    } while ! residue( $f( $x_0 ) );
+
+    return $x_0;
 }

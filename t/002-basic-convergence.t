@@ -7,6 +7,8 @@ use Math::ConvergenceMethods;
 
 sub f ($x) {return $x + 1;}
 
+sub f2 ($x) {return $x/3 + 1/2}
+
 {
     is-approx necessary-iterations(1,2), 49, "necessary-iterations working as expected";
     is-approx derivative(&f, 2), 1, "derivative working as expected";
@@ -41,5 +43,9 @@ sub f ($x) {return $x + 1;}
 {
     is-approx newton-raphson(&f, -2, 0), -1, "newton-raphson method converge as expected";
     dies-ok { newton-raphson(&f, 3, 2) }, "throws Invalid interval correctly";
+}
+{
+    is-approx functional-iteration(&f2, -2, -1), -3/2, "functional-iteration method converge as expected";
+    dies-ok { functional-iteration(&f2, 3, 2) }, "throws Invalid interval correctly";
 }
 done-testing;
