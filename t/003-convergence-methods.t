@@ -16,6 +16,8 @@ for [ &bisection, &regula-falsi, &seccant ] -> &f {
 
 subtest {
     is-approx newton-raphson(&foo, -2, 0), -1, "Method converge as expected";
+    is-approx newton-raphson(&foo, -2, 0, -1.01), -1, "Method converge as
+expected";
     dies-ok { newton-raphson(&foo, 3, 2) }, "throws Invalid interval correctly";
 }, "Testing Newton-Raphson";
 
