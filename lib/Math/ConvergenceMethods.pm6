@@ -12,7 +12,6 @@ sub necessary-iterations ($a, $b, $epsilon = 1e-15) is export {
     (log(($b-$a) / $epsilon) / log(2) - 1).ceiling
 }
 
-# bisection method
 sub bisection (&f, $a is copy, $b is copy where $a < $b) is export {
     my $n = necessary-iterations($a, $b);
     for 1 .. $n {
@@ -32,8 +31,6 @@ sub bisection (&f, $a is copy, $b is copy where $a < $b) is export {
     }
 }
 
-
-# regula-falsi method
 sub regula-falsi (&f, $a is copy, $b is copy where $a < $b) is export {
     my $c = $b - ( $b - $a ) * f($b) / ( f($b) - f($a) );
 
@@ -50,7 +47,6 @@ sub regula-falsi (&f, $a is copy, $b is copy where $a < $b) is export {
     return $c;
 }
 
-# seccant method
 sub seccant (&f, $a is copy, $b is copy where $a < $b ) is export {
     my $c = $b - ( $b - $a ) * f($b) / ( f($b) - f($a) );
 
@@ -63,7 +59,6 @@ sub seccant (&f, $a is copy, $b is copy where $a < $b ) is export {
     return $c;
 }
 
-# newthon-raphson
 sub newton-raphson (&f, $a, $b where $a < $b) is export {
     my $x_0 = ($a+$b) / 2.0;
     my $x_1 = $x_0 -f($x_0) / derivative( &f, $x_0 );
