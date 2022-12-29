@@ -73,25 +73,23 @@ sub newton-raphson (&f, $a,
 
 sub functional-iteration (&f, $a, $b where $a < $b) is export {
     my $x_0 = ($a+$b) / 2.0;
-    repeat {
-        last if $x_0 == f($x_0);
+    {
         $x_0 = f($x_0);
-    } until residue( f( $x_0 ) );
+    } while !residue( f( $x_0 ) );
 
     return $x_0;
 }
 
-sub steffsen ($f, $a, $b where $a < $b) is export {
-    my $x_1 = ($a+$b) / 2.0;
-    my $x = $x_1;
-    $x_1 = $f($x_1);
-    my $x_2 = $f($x_1);
-
+sub steffsen (&f, $a, $b where $a < $b) is export {
+    my $x = ($a+$b) / 2.0;
+    my $x_1 = f($x);
+    my $x_2 = f($x_1);
     {
-      $x = $x - ( ($x_1-$x)**2 ) / ( $x_2-2*$x_1+$x );
-      $x_1 = $f( $x );
-      $x_2 = $f($x_1);
-    } while ! residue( $f( $x ) );
+        last if ( $x_2-2*$x_1+$x == 0) ;
+        $x = $x - ( ($x_1-$x)**2 ) / ( $x_2-2*$x_1+$x );
+        $x_1 = f( $x );
+        $x_2 = f($x_1);
+    } while !residue( f( $x ) );
 
     return $x;
 }
