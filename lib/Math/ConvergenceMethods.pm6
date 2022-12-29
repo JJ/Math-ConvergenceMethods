@@ -4,8 +4,8 @@ use Math::StoppingConditions;
 
 unit module Math::ConvergenceMethods;
 
-sub derivative ($f, $x, $delta = 1e-4) is export {
-    ( $f( $x + $delta ) - $f($x) ) / $delta
+sub derivative (&f, $x, $delta = 1e-4) is export {
+    ( f( $x + $delta ) - f($x) ) / $delta
 }
 
 sub necessary-iterations ($a, $b, $epsilon = 1e-15) is export {
@@ -62,17 +62,16 @@ sub seccant (&f, $a is copy, $b is copy where $a < $b ) is export {
 sub newton-raphson (&f, $a, $b where $a < $b) is export {
     my $x_0 = ($a+$b) / 2.0;
     my $x_1 = $x_0 -f($x_0) / derivative( &f, $x_0 );
-
     {
+        say "$x_0 $x_1";
         $x_0 = $x_1;
         $x_1 = $x_0 -f($x_0) / derivative( &f, $x_0 );
-
+        say "$x_0 $x_1";
     } while ! residue( f( $x_1 ) );
 
     return $x_1;
 }
 
-# functional iteration
 sub functional-iteration ($f, $a, $b where $a < $b) is export {
     my $x_0 = ($a+$b) / 2.0;
 
@@ -83,7 +82,6 @@ sub functional-iteration ($f, $a, $b where $a < $b) is export {
     return $x_0;
 }
 
-# steffsen
 sub steffsen ($f, $a, $b where $a < $b) is export {
     my $x_1 = ($a+$b) / 2.0;
     my $x = $x_1;

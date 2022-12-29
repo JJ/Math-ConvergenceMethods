@@ -13,6 +13,7 @@ sub relative-diff (PositiveNum:D $x_1, Numeric:D $x_0, PositiveNum:D $epsilon = 
 }
 
 sub residue (Numeric:D $x, PositiveNum:D $epsilon = 10e-15) is export {
-    return abs( $x ) < $epsilon ?? True !! False;
+    say "$x $epsilon";
+    return abs( $x ) < $epsilon;
 }
 
