@@ -10,3 +10,6 @@
 
 # Comma
 .idea/
+
+# Coverage
+.racoco/
