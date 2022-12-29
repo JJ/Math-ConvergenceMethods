@@ -1,4 +1,4 @@
-# Math-ConvergenceMethods
+# Math-ConvergenceMethods [![Test-install distro](https://github.com/JJ/Math-ConvergenceMethods/actions/workflows/test.yaml/badge.svg)](https://github.com/JJ/Math-ConvergenceMethods/actions/workflows/test.yaml)
 
 ## Methods
 
