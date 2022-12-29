@@ -23,8 +23,8 @@ expected";
 
 for [&functional-iteration,&steffsen] -> &f {
     subtest {
-        is-approx f(&bar, -2, -1), -3/2, "functional-iteration method converge
-as expected";
+        is-approx f(&bar, -2, -1), -3/2, "Method converges as expected";
+        is-approx f(&bar, -2, 2), ¾, "Method converges as expected";
         dies-ok { f(&bar, 3, 2) }, "throws Invalid interval correctly";
     }
 }

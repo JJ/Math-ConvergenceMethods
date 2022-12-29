@@ -66,18 +66,17 @@ sub newton-raphson (&f, $a,
     {
         $x_0 = $x_1;
         $x_1 = $x_0 -f($x_0) / derivative( &f, $x_0 );
-        say "$x_0 $x_1";
     } while ! residue( f( $x_1 ) );
 
     return $x_1;
 }
 
-sub functional-iteration ($f, $a, $b where $a < $b) is export {
+sub functional-iteration (&f, $a, $b where $a < $b) is export {
     my $x_0 = ($a+$b) / 2.0;
-
-    {
-        $x_0 = $f($x_0);
-    } while ! residue( $f( $x_0 ) );
+    repeat {
+        last if $x_0 == f($x_0);
+        $x_0 = f($x_0);
+    } until residue( f( $x_0 ) );
 
     return $x_0;
 }
