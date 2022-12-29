@@ -28,22 +28,7 @@ sub f2 ($x) {return $x/3 + 1/2}
     ok residue(2, 3);
     nok residue(1);
 }
-{
-    is-approx bisection(&f, -2, 0), -1, "bisecction method converge as expected";
-    dies-ok { bisection(&f, 3, 2) }, "throws Invalid interval correctly";
-}
-{
-    is-approx regula-falsi(&f, -2, 0), -1, "regula-falsi method converge as expected";
-    dies-ok { regula-falsi(&f, 3, 2) }, "throws Invalid interval correctly";
-}
-{
-    is-approx seccant(&f, -2, 0), -1, "seccant method converge as expected";
-    dies-ok { seccant(&f, 3, 2) }, "throws Invalid interval correctly";
-}
-{
-    is-approx newton-raphson(&f, -2, 0), -1, "newton-raphson method converge as expected";
-    dies-ok { newton-raphson(&f, 3, 2) }, "throws Invalid interval correctly";
-}
+
 {
     is-approx functional-iteration(&f2, -2, -1), -3/2, "functional-iteration method converge as expected";
     dies-ok { functional-iteration(&f2, 3, 2) }, "throws Invalid interval correctly";
