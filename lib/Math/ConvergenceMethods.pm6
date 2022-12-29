@@ -12,18 +12,17 @@ sub necessary-iterations ($a, $b, $epsilon = 1e-15) is export {
     (log(($b-$a) / $epsilon) / log(2) - 1).ceiling
 }
 
-# bisectioni method
-sub bisection ($f, $a is copy, $b is copy) is export {
-    die "Invalid interval (a < b)" if $a >= $b;
+# bisection method
+sub bisection (&f, $a is copy, $b is copy where $a < $b) is export {
     my $n = necessary-iterations($a, $b);
     for 1 .. $n {
         state $c;
         $c = ($a+$b) / 2;
 
         # solution found
-        return $c if residue( $f($c) );
+        return $c if residue( f($c) );
 
-        if $f( $a )*$f( $c ) < 0 {
+        if f( $a )*f( $c ) < 0 {
             $b=$c
         } else {
             $a=$c
@@ -35,8 +34,7 @@ sub bisection ($f, $a is copy, $b is copy) is export {
 
 
 # regula-falsi method
-sub regula-falsi ($f, $a is copy, $b is copy) is export {
-    die "Invalid interval (a < b)" if $a >= $b;
+sub regula-falsi ($f, $a is copy, $b is copy where $a < $b) is export {
     my $c = $b - ( $b - $a ) * $f($b) / ( $f($b) - $f($a) );
 
     {
@@ -53,8 +51,7 @@ sub regula-falsi ($f, $a is copy, $b is copy) is export {
 }
 
 # seccant method
-sub seccant ($f, $a is copy, $b is copy) is export {
-    die "Invalid interval (a < b)" if $a >= $b;
+sub seccant ($f, $a is copy, $b is copy where $a < $b ) is export {
     my $c = $b - ( $b - $a ) * $f($b) / ( $f($b) - $f($a) );
 
     {
@@ -67,8 +64,7 @@ sub seccant ($f, $a is copy, $b is copy) is export {
 }
 
 # newthon-raphson
-sub newton-raphson ($f, $a, $b) is export {
-    die "Invalid interval (a < b)" if $a >= $b;
+sub newton-raphson ($f, $a, $b where $a < $b) is export {
     my $x_0 = ($a+$b) / 2.0;
     my $x_1 = $x_0 -$f($x_0) / derivative( $f, $x_0 );
 
@@ -82,8 +78,7 @@ sub newton-raphson ($f, $a, $b) is export {
 }
 
 # functional iteration
-sub functional-iteration ($f, $a, $b) is export {
-    die "Invalid interval (a < b)" if $a >= $b;
+sub functional-iteration ($f, $a, $b where $a < $b) is export {
     my $x_0 = ($a+$b) / 2.0;
 
     {
@@ -94,8 +89,7 @@ sub functional-iteration ($f, $a, $b) is export {
 }
 
 # steffsen
-sub steffsen ($f, $a, $b) is export {
-    die "Invalid interval (a < b)" if $a >= $b;
+sub steffsen ($f, $a, $b where $a < $b) is export {
     my $x_1 = ($a+$b) / 2.0;
     my $x = $x_1;
     $x_1 = $f($x_1);
