@@ -63,7 +63,6 @@ sub newton-raphson (&f, $a, $b where $a < $b) is export {
     my $x_0 = ($a+$b) / 2.0;
     my $x_1 = $x_0 -f($x_0) / derivative( &f, $x_0 );
     {
-        say "$x_0 $x_1";
         $x_0 = $x_1;
         $x_1 = $x_0 -f($x_0) / derivative( &f, $x_0 );
         say "$x_0 $x_1";
