@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.com/antoniogamiz/Math-ConvergenceMethods.svg?branch=master)](https://travis-ci.com/antoniogamiz/Math-ConvergenceMethods)
-
 # Math-ConvergenceMethods
 
 ### Methods
