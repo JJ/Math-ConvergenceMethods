@@ -3,7 +3,7 @@
   "version": "0.6.0",
   "auth": "zef:jjmerelo",
   "license": "GPL-3.0-only",
-  "description": "Raku convergence methods to solve lineal and non lineal equations",
+  "description": "Raku convergence methods to solve linear and non linear equations",
   "tags": ["Math", "Convergence", "Equations"],
   "depends": [],
   "provides": {
