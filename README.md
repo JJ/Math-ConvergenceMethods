@@ -22,6 +22,7 @@ This modules uses three different stopping conditions.
 
 ## LICENSE
 
-(c) 2019 [Antonio Gámiz](https://github.com/antoniogamiz)
+(c) 2019 [Antonio Gámiz](https://github.com/antoniogamiz), 2022 [JJ Merelo
+](https://github.com/JJ).
 
 This has been releases under the GPL-3.0 license. 
