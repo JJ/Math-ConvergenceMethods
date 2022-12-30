@@ -82,7 +82,7 @@ sub functional-iteration (&f, $a, $b where $a < $b) is export {
     }
 }
 
-sub steffsen (&f, $a, $b where $a < $b) is export {
+sub steffensen (&f, $a, $b where $a < $b) is export {
     my $x = ($a+$b) / 2.0;
     my $x_1 = f($x);
     my $x_2 = f($x_1);

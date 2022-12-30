@@ -7,7 +7,7 @@
 3. Secant [+info](https://en.wikipedia.org/wiki/Secant_method)
 4. Newton-Rahpson [+info](https://en.wikipedia.org/wiki/Newton%27s_method)
 5. Fixed-point iteration [+info](https://en.wikipedia.org/wiki/Fixed-point_iteration)
-6. Steffsen [+info](https://en.wikipedia.org/wiki/Steffensen%27s_method)
+6. Steffensen [+info](https://en.wikipedia.org/wiki/Steffensen%27s_method)
 
 ## Stop conditions
 
