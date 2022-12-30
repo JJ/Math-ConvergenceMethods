@@ -82,16 +82,15 @@ sub functional-iteration (&f, $a, $b where $a < $b) is export {
     }
 }
 
-sub steffensen (&f, $a, $b where $a < $b) is export {
-    my $x = ($a+$b) / 2.0;
-    my $x_1 = f($x);
-    my $x_2 = f($x_1);
-    {
-        die "Does not converge" if ( $x_2-2*$x_1+$x == 0) ;
-        $x = $x - ( ($x_1-$x)**2 ) / ( $x_2-2*$x_1+$x );
-        $x_1 = f( $x );
-        $x_2 = f($x_1);
-    } while !residue( f( $x ) );
+sub steffensen (&f, $a,
+                $b where $a < $b,
+                $x0 is copy = ($a+$b) / 2.0) is export {
+    repeat {
+        my $fx = f($x0);
+        my $gx = f( $x0 + $fx )/$fx - 1;
+        say "S $fx, $gx, $x0";
+        $x0 -= $fx/$gx;
+    } until residue( f( $x0 ) );
 
-    return $x;
+    return $x0;
 }
