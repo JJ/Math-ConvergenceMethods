@@ -73,12 +73,13 @@ sub newton-raphson (&f, $a,
 
 sub functional-iteration (&f, $a, $b where $a < $b) is export {
     my $x_0 = ($a+$b) / 2.0;
-    {
-        die "Does not converge" if $x_0 == f($x_0);
-        $x_0 = f($x_0);
-    } while !residue( f( $x_0 ) );
+    $x_0 = f($x_0) while $x_0 != f($x_0);
 
-    return $x_0;
+    if $a <= $x_0 <= $b {
+        return $x_0;
+    } else {
+        fail("Fixed point $x_0 does not fall between $a and $b")
+    }
 }
 
 sub steffsen (&f, $a, $b where $a < $b) is export {
