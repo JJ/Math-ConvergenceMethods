@@ -74,6 +74,7 @@ sub newton-raphson (&f, $a,
 sub functional-iteration (&f, $a, $b where $a < $b) is export {
     my $x_0 = ($a+$b) / 2.0;
     {
+        die "Does not converge" if $x_0 == f($x_0);
         $x_0 = f($x_0);
     } while !residue( f( $x_0 ) );
 
@@ -85,7 +86,7 @@ sub steffsen (&f, $a, $b where $a < $b) is export {
     my $x_1 = f($x);
     my $x_2 = f($x_1);
     {
-        last if ( $x_2-2*$x_1+$x == 0) ;
+        die "Does not converge" if ( $x_2-2*$x_1+$x == 0) ;
         $x = $x - ( ($x_1-$x)**2 ) / ( $x_2-2*$x_1+$x );
         $x_1 = f( $x );
         $x_2 = f($x_1);
