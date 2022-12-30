@@ -1,5 +1,3 @@
-use v6;
-
 use Math::StoppingConditions;
 
 unit module Math::ConvergenceMethods;
